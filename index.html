@@ -9,9 +9,21 @@
 <body>
   <div class="header">
     <h3>Library</h3>
-    <button>Add Book</button>
+    <button class="modal-btn" id="modalBtn">Add Book</button>
+    <dialog id="addModal">
+        <form>
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required> 
+            <label for="author">Author:</label>
+            <input type="text" id="author" name="author" required>
+            <label for="pages">Pages:</label>
+            <input type="number" id="pages" name="pages" required>
+            <button type="submit" id="confirmBtn">Add</button>
+        </form>
+    </dialog>
   </div>
   <div class="books"></div>
+  
   <script src="script.js"></script>
 </body>
 </html>
