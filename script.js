@@ -11,13 +11,12 @@ function addBookToLibrary(title, author, page){
     let id = crypto.randomUUID();
     myLibrary.push(new Book(title, author, page, id));  
 }
-
 function displayBooks(){ 
     const container = document.querySelector(".books");
     while(container.firstChild){
         container.removeChild(container.firstChild);
     }
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         const div = document.createElement("div");
         const deleteBtn = document.createElement("button");
         div.classList.add("book");
@@ -27,13 +26,15 @@ function displayBooks(){
         ID: ${book.id}`;
         deleteBtn.classList.add("delete-btn");
         deleteBtn.id = "deleteBtn";
-        deleteBtn.setAttribute("data_id",book.id);
         deleteBtn.textContent = "Delete";
         div.appendChild(deleteBtn);
         container.appendChild(div);
+        deleteBtn.addEventListener("click",()=>{
+            myLibrary.splice(index,1);
+            displayBooks();
+        })
     });
 }
-
 const showButton = document.getElementById("modalBtn");
 const modal = document.getElementById("addModal");
 const title = modal.querySelector("#title");
@@ -46,7 +47,7 @@ showButton.addEventListener("click",()=>{
 });
 modal.addEventListener("close",(e)=>{
     addBookToLibrary(title.value,author.value,pages.value);
-    displayBooks();
+    displayBooks(); 
 })
 confirmBtn.addEventListener("click", (e)=>{
     e.preventDefault();
