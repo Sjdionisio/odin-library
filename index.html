@@ -11,13 +11,25 @@
     <h3>Library</h3>
     <button class="modal-btn" id="modalBtn">Add Book</button>
     <dialog id="addModal">
-        <form>
+        <form id="addForm">
+          <p>
             <label for="title">Title:</label>
             <input type="text" id="title" name="title" required> 
+          </p> 
+          <p>
             <label for="author">Author:</label>
             <input type="text" id="author" name="author" required>
+          </p>
+          <p>
             <label for="pages">Pages:</label>
             <input type="number" id="pages" name="pages" required>
+          </p>
+          <p>
+            <label for="read">Read:</label>
+            <input type="radio" name="read" id="read" value="1">
+            <label for="notread">Not Read:</label>
+            <input type="radio" name="read" id="notRead" value="0">
+          </p>
             <button type="submit" id="confirmBtn">Add</button>
         </form>
     </dialog>
